@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background-color: black;
+            font-size: 12px;
+            font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none
+        }
+
+        li {
+            width: 100%;
+            float: left
+        }
+
+        .wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0
+        }
+
+        .header {
+            width: 30%;
+            position: fixed;
+            top: 0;
+            padding: 0 70%;
+            margin-top: 2%;
+        }
+
+        .middleContent li {
+            margin-top: 1.1%;
+            margin-bottom: .85%;
+            font-size: 1.8em
+        }
+
+        .middleContent li:first-child {
+            margin-top: 2%
+        }
+
+        .mask {
+            position: absolute;
+            padding: 0px;
+            filter: alpha(opacity=60);
+            background-color: black;
+            z-index: 1002;
+            opacity: 0.8;
+            -moz-opacity: 0.5;
+        }
+
+        .mask_show {
+            height: auto;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="mask" class="mask" style="display: none"></div>
+<img id="bgImg" src="Static/download/img/111.jpg">
+<script src="Static/js/jquery2.1.4.min.js"></script>
+    <script type="text/javascript">
+		function getQueryStringByName(name){
+			 var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
+			 if(result == null || result.length < 1){
+				 return "";
+			 }
+			 return result[1];
+		}
+		
+		function isWeiXin() {
+		    var ua = navigator.userAgent.toLowerCase();
+		    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+		        return true;
+		    } else {
+		        return false;
+		    }
+		}
+		
+		function isIos(){
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			return isiOS;
+		}
+		
+        $(function () {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if ((ua.match(/MicroMessenger/i) == "micromessenger")) {
+                $("#mask").css("height", "100%");
+                $("#mask").css("width", "100%");
+                $("#mask").append("<img class=\"mask_show\" src=\"Static/download/img/layer_mask_2.png\" />");
+
+                $("#bgImg").on("click", function () {
+                    $("#mask").show();
+                    $("body").css("overflow", "hidden");
+                    $('body').on('touchmove touchstart', function (event) {
+                        event.preventDefault();
+                    });
+                });
+            } else {
+                $("#bgImg").on("click", function () {
+                    if(isIos()){
+						window.open("https://dibaqu.com/Nnya");
+					}else{
+						if(getQueryStringByName("id") == "qwddz_yyb2"){
+							window.open("https://ddz-cdn.350yx.com/fx/qwddz_yybfx.apk");
+						}else{
+							window.open("https://ddz-cdn.350yx.com/fx/qwddz_gffx.apk");
+						}
+					}
+                });
+            }
+        });
+    </script>
+</body>
+</html>
