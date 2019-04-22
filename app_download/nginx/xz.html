@@ -14,15 +14,10 @@
             padding: 0
         }
 
-        body {
-            background-color: black;
-            font-size: 12px;
-            font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif
-        }
-
-        img {
-            width: 100%;
-            display: block;
+        html,body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
 
         ul {
@@ -72,13 +67,87 @@
             height: auto;
             width: 100%;
         }
+
+        img.ex1
+        {
+            width: 100%;
+            height: 100%;
+        }
+
+        img.ex2
+        {
+            position:absolute;
+            top:0px;
+            width: 100%;
+            height: 51%;
+        }
+
+        img.ex3
+        {
+            position:absolute;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        img.ex4
+        {
+            position: absolute;
+            top:0px;
+            width: 100%;
+        }
+
+        img.ex5
+        {
+            position: absolute; 
+            bottom: 1%;
+            width: 70%;
+            height: 12%;
+            left: 15%;
+        }
+
+        img.ex6
+        {
+            position: absolute;
+            bottom: 25%;
+            width: 16%;
+            height: 10%;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            top:0;
+            z-index: -1; 
+            position: absolute;
+        }
+
+        .content img {
+            display: block;
+            outline: none;
+            border:0;
+            height: 100%;
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>
 <div id="mask" class="mask" style="display: none"></div>
-<img id="bgImg" src="Static/download/img/111.jpg">
-<script src="Static/js/jquery2.1.4.min.js"></script>
-    <script type="text/javascript">
+<div id="content" class="content">
+    <img id="bgImg" src="Static/download/img/bg.jpg">
+</div>
+<img class="ex4" src="Static/download/gif/rp_fall.gif">
+<img class="ex2" src="Static/download/img/fg_top.png">
+<img class="ex3" src="Static/download/img/fg_bottom.png">
+<img id="btnDownload" class="ex5" src="Static/download/gif/btn_download.gif">
+<img class="ex6" src="Static/download/gif/rp_shake.gif" style="left:14%">
+<img class="ex6" src="Static/download/gif/rp_shake.gif" style="left:42%">
+<img class="ex6" src="Static/download/gif/rp_shake.gif" style="left:70%">
+
+<script src="Static/js/jquery2.1.4.min.js" ></script>
+<script src="Static/js/tweenjs.min.js" ></script>
+<script type="text/javascript">
 		function getQueryStringByName(name){
 			 var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
 			 if(result == null || result.length < 1){
@@ -104,6 +173,7 @@
 		}
 		
         $(function () {
+            
             var ua = window.navigator.userAgent.toLowerCase();
             if ((ua.match(/MicroMessenger/i) == "micromessenger")) {
                 $("#mask").css("height", "100%");
@@ -118,7 +188,7 @@
                     });
                 });
             } else {
-                $("#bgImg").on("click", function () {
+                $("#btnDownload").on("click", function () {
                     if(isIos()){
 						window.open("https://dibaqu.com/Nnya");
 					}else{
@@ -130,6 +200,7 @@
 					}
                 });
             }
+            
         });
     </script>
 </body>
