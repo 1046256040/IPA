@@ -135,23 +135,28 @@
 <body>
 <div id="mask" class="mask" style="display: none"></div>
 <div id="content" class="content">
-    <img id="bgImg" src="Static/download/img/bg.jpg">
+    <img id="bgImg" src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/img/bg.jpg">
 </div>
-<img class="ex4" src="Static/download/gif/rp_fall.gif">
-<img class="ex2" src="Static/download/img/fg_top.png">
-<img class="ex3" src="Static/download/img/fg_bottom.png">
-<img id="btnDownload" class="ex5" src="Static/download/gif/btn_download.gif">
-<img class="ex6" src="Static/download/gif/rp_shake.gif" style="left:14%">
-<img class="ex6" src="Static/download/gif/rp_shake.gif" style="left:42%">
-<img class="ex6" src="Static/download/gif/rp_shake.gif" style="left:70%">
+<img class="ex4" src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/gif/rp_fall.gif">
+<img class="ex2" src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/img/fg_top.png">
+<img class="ex3" src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/img/fg_bottom.png">
+<img id="btnDownload" class="ex5" src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/gif/btn_download.gif">
+<img class="ex6" src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/gif/rp_shake.gif" style="left:14%">
+<img class="ex6" src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/gif/rp_shake.gif" style="left:42%">
+<img class="ex6" src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/gif/rp_shake.gif" style="left:70%">
 
-<script src="Static/js/jquery2.1.4.min.js" ></script>
-<script src="Static/js/tweenjs.min.js" ></script>
+<script src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/js/jquery2.1.4.min.js" ></script>
+<script src="https://ddz-cdn.350yx.com/qtt1w/nginx/Static/js/tweenjs.min.js" ></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
+        window.onload = function(){
+            uploadPv();
+        }
+
 		function getQueryStringByName(name){
 			 var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
 			 if(result == null || result.length < 1){
-				 return "";
+				 return "qwddz_gf";
 			 }
 			 return result[1];
 		}
@@ -164,23 +169,38 @@
 		        return false;
 		    }
 		}
-		
+
 		function isIos(){
 			var u = navigator.userAgent;
 			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 			return isiOS;
 		}
+
+        function uploadDownload() {
+            var msg = "{\"client_ip\":" + "\"" + returnCitySN["cip"] + "\"" + "}";
+            var url = "http://ddz-announce.350yx.com/qtt1w/download";
+            var request = new XMLHttpRequest();
+            request.open("POST", url);
+            request.send(msg);
+        }
+
+        function uploadPv() {
+            var url = "http://ddz-announce.350yx.com/qtt1w/click";
+            var msg = "{\"client_ip\":" + "\"" + returnCitySN["cip"] + "\"" + "}";
+            var request = new XMLHttpRequest();
+            request.open("POST", url);
+            request.send(msg);
+        }
 		
         $(function () {
-            
             var ua = window.navigator.userAgent.toLowerCase();
             if ((ua.match(/MicroMessenger/i) == "micromessenger")) {
                 $("#mask").css("height", "100%");
                 $("#mask").css("width", "100%");
-                $("#mask").append("<img class=\"mask_show\" src=\"Static/download/img/layer_mask_2.png\" />");
+                $("#mask").append("<img class=\"mask_show\" src=\"https://ddz-cdn.350yx.com/qtt1w/nginx/Static/download/img/layer_mask_2.png\" />");
 
-                $("#bgImg").on("click", function () {
+                $("body").on("click", function () {
                     $("#mask").show();
                     $("body").css("overflow", "hidden");
                     $('body').on('touchmove touchstart', function (event) {
@@ -188,20 +208,18 @@
                     });
                 });
             } else {
-                $("#btnDownload").on("click", function () {
+                $("body").on("click", function () {
                     if(isIos()){
 						window.open("https://dibaqu.com/Nnya");
 					}else{
-						if(getQueryStringByName("id") == "qwddz_yyb2"){
-							window.open("https://ddz-cdn.350yx.com/fx/qwddz_yybfx.apk");
-						}else{
-							window.open("https://ddz-cdn.350yx.com/fx/qwddz_gffx.apk");
-						}
+                        window.open("https://ddz-cdn.350yx.com/qwddz/2.7.1/qwddz_qtt1w.apk");
 					}
+
+                    uploadDownload();
                 });
             }
-            
         });
+
     </script>
 </body>
 </html>
