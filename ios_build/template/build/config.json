@@ -1,0 +1,35 @@
+{
+	"ios": {
+        "project": "basketball.xcworkspace", 
+        "info": "ios/Info.plist",
+        "scheme": "basketball-mobile",
+        "installTemplate": "install_template",
+        "buildTypes": {
+            "appstore": {
+                "teamId": "3QKKSMV5FS",
+                "bundleId": "com.sagiteam.basketball",
+                "method": "app-store",
+                "profile": "4c23d88c-c4bd-4361-865a-1b75bfb1bec3", 
+                "cert": "Apple Distribution: xiaoting Liu (3QKKSMV5FS)",
+                "bitcode": false
+            },
+            "release": {
+                "teamId": "3QKKSMV5FS",
+                "bundleId": "com.sagiteam.basketball",
+                "method": "ad-hoc",
+                "profile": "2dd6385f-f2eb-4274-8914-55e58ef0d246", 
+                "cert": "Apple Distribution: xiaoting Liu (3QKKSMV5FS)",
+                "bitcode": false
+            },
+            "test": {
+                "teamId": "3QKKSMV5FS",
+                "bundleId": "com.sagiteam.basketball",
+                "method": "development",
+                "profile": "3d043b94-f61e-43cc-82bc-18fded97c21d", 
+                "cert": "Apple Development: xiaoting Liu (7LSWKVLQ4B)",
+                "bitcode": false
+            }
+        }
+        
+    }
+}
